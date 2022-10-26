@@ -47,6 +47,13 @@ long double fabsl(long double x) {
 }
 #endif
 
+// copysign has builtin routines on ARM64
+
+#if defined (__aarch64__)
+double copysign(double x, double y) { return __builtin_copysign(x, y); }
+float copysignf(float x, float y) { return __builtin_copysignf(x, y); }
+#endif
+
 #if defined(__aarch64__)
 float ceilf(float x) { return __builtin_ceilf(x); }
 double ceil(double x) { return __builtin_ceil(x); }
