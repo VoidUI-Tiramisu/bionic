@@ -47,11 +47,15 @@ long double fabsl(long double x) {
 }
 #endif
 
-// copysign has builtin routines on ARM64
+// copysign/lround/llround have builtin routines on ARM64
 
 #if defined (__aarch64__)
 double copysign(double x, double y) { return __builtin_copysign(x, y); }
 float copysignf(float x, float y) { return __builtin_copysignf(x, y); }
+long lround(double x) { return __builtin_lround(x); }
+long lroundf(float x) { return __builtin_lroundf(x); }
+long long llround(double x) { return __builtin_llround(x); }
+long long llroundf(float x) { return __builtin_llroundf(x); }
 #endif
 
 #if defined(__aarch64__)
